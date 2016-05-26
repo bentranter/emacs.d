@@ -1,8 +1,10 @@
+;;; init.el --- emacs customization
 
+;; Commentary: It's my emacs config duhhh
 (require 'package)
+(package-initialize)
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.org/packages/") t)             ; Look for packages in Melpa
-(package-initialize)
 
 (setq inhibit-startup-message t)                           ; Disable the default startup message
 
@@ -23,9 +25,11 @@
 
 (global-flycheck-mode)                                     ; Enable Flycheck
 
-(defun auto-complete-for-go ()                             ; Define autocomplete for Go
-  (auto-complete-mode 1))
-(add-hook 'go-mode-hook 'auto-complete-for-go)             ; Enable autocomplete for Gocolor
+(add-hook 'go-mode-hook 'company-mode)                     ; Enable autocomplete for Go using company mode
+(add-hook 'go-mode-hook (lambda ()
+  (set
+    (make-local-variable 'company-backends) '(company-go))
+    (company-mode)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
