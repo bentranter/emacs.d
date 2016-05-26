@@ -1,3 +1,4 @@
+
 (require 'package)
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.org/packages/") t)             ; Look for packages in Melpa
@@ -19,6 +20,8 @@
 (setq exec-path (cons "/usr/local/go/bin" exec-path))      ; Add Go binaries to path
 (add-to-list 'exec-path "/Users/bentranter/Go/bin")        ; Add $GOPATH binaries to path
 (add-hook 'before-save-hook 'gofmt-before-save)            ; Add `go fmt` on save hook
+
+(global-flycheck-mode)                                     ; Enable Flycheck
 
 (defun auto-complete-for-go ()                             ; Define autocomplete for Go
   (auto-complete-mode 1))
