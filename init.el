@@ -1,6 +1,7 @@
 ;;; init.el --- emacs customization
 
-;; Commentary: It's my emacs config duhhh
+;;; Commentary: It's my emacs config duhhh
+
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives
@@ -18,6 +19,18 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/") ; Load custom themes
 
 (setq org-src-preserve-indentation t)                      ; Preserve indentation
+
+(unless window-system                                      ; Enable mouse in iTerm2
+  (require 'mouse)
+  (xterm-mouse-mode t)
+  (global-set-key [mouse-4] (lambda ()
+    (interactive)
+    (scroll-down 1)))
+  (global-set-key [mouse-5] (lambda ()
+    (interactive)
+    (scroll-up 1)))
+  (defun track-mouse (e))
+  (setq mouse-sel-mode t))
 
 (setq exec-path (cons "/usr/local/go/bin" exec-path))      ; Add Go binaries to path
 (add-to-list 'exec-path "/Users/bentranter/Go/bin")        ; Add $GOPATH binaries to path
