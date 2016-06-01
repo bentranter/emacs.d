@@ -9,7 +9,33 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)  ; Look for packages in Melpa
 
+(defvar package-list)
+
+(setq package-list
+      '(
+	auto-complete
+	company
+	company-go
+	company-tern
+	dash
+	dash-functional
+	epl
+	exec-path-from-shell
+	flycheck
+	go-autocomplete
+	go-mode
+	tern
+	tern-auto-complete
+	))
+
 (package-initialize)                                       ; Initialize packages
+
+(unless package-archive-contents                           ; Fetch the list of available packages
+  (package-refresh-contents))
+
+(dolist (package package-list)                             ; Install missing packages
+  (unless (package-installed-p package)
+    (package-install package)))
 
 (add-to-list 'load-path "~/.emacs.d/languages/")           ; Load language specific settings
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/") ; Load custom themes
