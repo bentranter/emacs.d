@@ -5,8 +5,9 @@
 
 ;;; Code:
 
-(add-hook 'js-mode-hook (lambda ()
-			  tern-mode t))
+(require 'tern)
+(require 'company-tern)
+
 (add-hook 'js-mode-hook 'company-mode)
 (add-hook 'js-mode-hook (lambda ()
 			  (set
