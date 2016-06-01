@@ -1,0 +1,10 @@
+;;; package --- go.el
+
+;;; Commentary:
+;;; My settings for Go.
+
+;;; Code:
+
+(provide 'go)
+
+;;; go.el ends here

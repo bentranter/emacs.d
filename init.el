@@ -1,12 +1,22 @@
-;;; init.el --- emacs customization
+;;; package --- init.el
 
 ;;; Commentary:
-;;; It's my Emacs config duhhh
+;;; This is my Emacs config.  I typically use Go, JavaScript, HTML, and CSS.
+
+;;; Code:
 
 (require 'package)
-(package-initialize)
 (add-to-list 'package-archives
-  '("melpa" . "http://melpa.org/packages/") t)             ; Look for packages in Melpa
+	     '("melpa" . "http://melpa.org/packages/") t)  ; Look for packages in Melpa
+
+(package-initialize)                                       ; Initialize packages
+
+(add-to-list 'load-path "~/.emacs.d/languages/")           ; Load language specific settings
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/") ; Load custom themes
+
+(require 'lisp)                                            ; Load lisp-specific config
+(require 'go)
+(require 'js)
 
 (setq inhibit-startup-message t)                           ; Disable the default startup message
 
@@ -16,8 +26,6 @@
 (defalias 'yes-or-no-p 'y-or-n-p)                          ; Simplify prompts (only yes or no)
 
 (setq column-number-mode t)                                ; Show cursor position
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/") ; Load custom themes
 
 (setq org-src-preserve-indentation t)                      ; Preserve indentation
 
@@ -33,29 +41,18 @@
   (defun track-mouse (e))
   (setq mouse-sel-mode t))
 
-(setq exec-path (cons "/usr/local/go/bin" exec-path))      ; Add Go binaries to path
-(add-to-list 'exec-path "/Users/bentranter/Go/bin")        ; Add $GOPATH binaries to path
-(add-hook 'before-save-hook 'gofmt-before-save)            ; Add `go fmt` on save hook
-
 (global-flycheck-mode)                                     ; Enable Flycheck
-
-(add-hook 'go-mode-hook 'company-mode)                     ; Enable autocomplete for Go using company mode
-(add-hook 'go-mode-hook (lambda ()
-  (set
-    (make-local-variable 'company-backends) '(company-go))
-  (company-mode)))
-
 
 (menu-bar-mode 0)                                          ; No file/edit/blabla top menu
 (setq inhibit-startup-message t)                           ; Disbale startup messages
 (setq bell-volume 0)                                       ; No more terminal bell
 
 (add-hook 'js-mode-hook (lambda () (tern-mode t)))         ; Enable Tern.js
-
-(eval-after-load 'tern                                     ; Use Tern's autocomplete
-  '(progn
-     (require 'tern-auto-complete)
-           (tern-ac-setup)))
+(add-hook 'js-mode-hook 'company-mode)
+(add-hook 'js-mode-hook (lambda ()
+  (set
+    (make-local-variable 'company-backends) '(company-tern))
+      (company-mode)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -99,3 +96,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(provide 'init)
+
+;;; init.el ends here
