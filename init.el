@@ -20,6 +20,7 @@
 	dash
 	dash-functional
 	epl
+	evil
 	exec-path-from-shell
 	flycheck
 	go-autocomplete
@@ -43,6 +44,9 @@
 (require 'lisp)                                            ; Load lisp-specific config
 (require 'go)
 (require 'js)
+
+(require 'evil)                                            ; Use Vim keybindings
+(evil-mode 1)
 
 (setq inhibit-startup-message t)                           ; Disable the default startup message
 
