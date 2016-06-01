@@ -1,6 +1,7 @@
 ;;; init.el --- emacs customization
 
-;;; Commentary: It's my emacs config duhhh
+;;; Commentary:
+;;; It's my Emacs config duhhh
 
 (require 'package)
 (package-initialize)
@@ -42,7 +43,19 @@
 (add-hook 'go-mode-hook (lambda ()
   (set
     (make-local-variable 'company-backends) '(company-go))
-    (company-mode)))
+  (company-mode)))
+
+
+(menu-bar-mode 0)                                          ; No file/edit/blabla top menu
+(setq inhibit-startup-message t)                           ; Disbale startup messages
+(setq bell-volume 0)                                       ; No more terminal bell
+
+(add-hook 'js-mode-hook (lambda () (tern-mode t)))         ; Enable Tern.js
+
+(eval-after-load 'tern                                     ; Use Tern's autocomplete
+  '(progn
+     (require 'tern-auto-complete)
+           (tern-ac-setup)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
