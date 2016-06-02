@@ -63,7 +63,7 @@
 ;; Load language specific stuff
 (require 'lisp)
 (require 'go)
-;(eval-after-load 'js2-mode '(require 'js))
+(require 'setup-js)
 
 ;; Use Vim keybindings like a normal person
 (require 'evil)
