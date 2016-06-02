@@ -5,12 +5,33 @@
 
 ;;; Code:
 
+;; Disable startup message
+(setq inhibit-startup-message t)
+
+;; Set path to dependencies
+(defvar languages-dir)
+(setq languages-dir (expand-file-name "languages" user-emacs-directory))
+
+(defvar themes-dir)
+(setq themes-dir (expand-file-name "themes" user-emacs-directory))
+
+;; Set up load path
+(add-to-list 'load-path languages-dir)
+(add-to-list 'custom-theme-load-path themes-dir)
+
+;; Keep custom file separate because it's annoying
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+
+;; Setup package stuff
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/") t)  ; Look for packages in Melpa
+	     '("melpa" . "http://melpa.org/packages/") t)
 
+(package-initialize)
+
+;; List all packages
 (defvar package-list)
-
 (setq package-list
       '(
 	auto-complete
@@ -25,30 +46,28 @@
 	flycheck
 	go-autocomplete
 	go-mode
+	js2-mode
 	tern
 	tern-auto-complete
 	))
 
-(package-initialize)                                       ; Initialize packages
-
-(unless package-archive-contents                           ; Fetch the list of available packages
+;; Refresh package list
+(unless package-archive-contents
   (package-refresh-contents))
 
-(dolist (package package-list)                             ; Install missing packages
+;; Install any missing packages
+(dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
 
-(add-to-list 'load-path "~/.emacs.d/languages/")           ; Load language specific settings
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/") ; Load custom themes
-
-(require 'lisp)                                            ; Load lisp-specific config
+;; Load language specific stuff
+(require 'lisp)
 (require 'go)
-(require 'js)
+;(eval-after-load 'js2-mode '(require 'js))
 
-(require 'evil)                                            ; Use Vim keybindings
+;; Use Vim keybindings like a normal person
+(require 'evil)
 (evil-mode 1)
-
-(setq inhibit-startup-message t)                           ; Disable the default startup message
 
 (global-linum-mode t)                                      ; Enable global line numbers
 (setq linum-format "%4d \u2502 ")
@@ -76,13 +95,6 @@
 (menu-bar-mode 0)                                          ; No file/edit/blabla top menu
 (setq inhibit-startup-message t)                           ; Disbale startup messages
 (setq bell-volume 0)                                       ; No more terminal bell
-
-(add-hook 'js-mode-hook (lambda () (tern-mode t)))         ; Enable Tern.js
-(add-hook 'js-mode-hook 'company-mode)
-(add-hook 'js-mode-hook (lambda ()
-  (set
-    (make-local-variable 'company-backends) '(company-tern))
-      (company-mode)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
