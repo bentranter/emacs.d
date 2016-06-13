@@ -34,12 +34,15 @@
 (defvar package-list)
 (setq package-list
       '(
+	alchemist
 	auto-complete
+	cmake-ide
 	company
 	company-go
 	company-tern
 	dash
 	dash-functional
+	elixir-mode
 	epl
 	evil
 	exec-path-from-shell
@@ -64,10 +67,14 @@
 (require 'lisp)
 (require 'go)
 (require 'setup-js)
+(require 'setup-cpp)
+(require 'setup-elixir)
 
 ;; Use Vim keybindings like a normal person
 (require 'evil)
 (evil-mode 1)
+
+(setq backup-directory-alist `(("." . "~/.saves")))        ; Place saves elsewhere
 
 (global-linum-mode t)                                      ; Enable global line numbers
 (setq linum-format "%4d \u2502 ")
