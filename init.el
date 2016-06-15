@@ -74,6 +74,11 @@
 (require 'evil)
 (evil-mode 1)
 
+(require 'sr-speedbar)
+(add-hook 'emacs-startup-hook (lambda ()
+				(sr-speedbar-open)))
+(setq sr-speedbar-right-side nil)
+
 (setq backup-directory-alist `(("." . "~/.saves")))        ; Place saves elsewhere
 
 (global-linum-mode t)                                      ; Enable global line numbers

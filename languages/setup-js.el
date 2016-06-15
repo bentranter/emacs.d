@@ -24,6 +24,8 @@
 			   (make-local-variable 'company-backends) '(company-tern))
 			  (company-mode)))
 
+(setq js-indent-level 2)
+
 (provide 'setup-js)
 
 ;;; setup-js.el ends here
