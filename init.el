@@ -1,4 +1,4 @@
-;;; package --- init.el
+;:; package --- init.el
 
 ;;; Commentary:
 ;;; This is my Emacs config.  I typically use Go, JavaScript, HTML, and CSS.
@@ -50,6 +50,7 @@
 	go-autocomplete
 	go-mode
 	js2-mode
+	neotree
 	tern
 	tern-auto-complete
 	))
@@ -74,15 +75,24 @@
 (require 'evil)
 (evil-mode 1)
 
-(require 'sr-speedbar)
-(global-set-key (kbd "C-x C-t") 'sr-speedbar-toggle)
-(setq sr-speedbar-width 28)
-(setq sr-speedbar-right-side nil)
+;; (require 'sr-speedbar)
+;; (global-set-key (kbd "C-x C-t") 'sr-speedbar-toggle)
+;; (setq sr-speedbar-width 28)
+;; (setq sr-speedbar-right-side nil)
+
+(require 'neotree)
+(add-hook 'neotree-mode-hook
+	  (lambda ()
+	    (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+	    (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+	    (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+	    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+(global-set-key (kbd "C-x C-t") 'neotree-toggle)
 
 (setq backup-directory-alist `(("." . "~/.saves")))        ; Place saves elsewhere
 
 (global-linum-mode t)                                      ; Enable global line numbers
-(setq linum-format "%4d \u2502 ")
+(setq linum-format "%4d  ")
 
 (defalias 'yes-or-no-p 'y-or-n-p)                          ; Simplify prompts (only yes or no)
 
