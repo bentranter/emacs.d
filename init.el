@@ -75,8 +75,8 @@
 (evil-mode 1)
 
 (require 'sr-speedbar)
-(add-hook 'emacs-startup-hook (lambda ()
-				(sr-speedbar-open)))
+(global-set-key (kbd "C-x C-t") 'sr-speedbar-toggle)
+(setq sr-speedbar-width 28)
 (setq sr-speedbar-right-side nil)
 
 (setq backup-directory-alist `(("." . "~/.saves")))        ; Place saves elsewhere
