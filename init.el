@@ -120,7 +120,7 @@
 (setq inhibit-startup-message t)                           ; Disbale startup messages
 (setq bell-volume 0)                                       ; No more terminal bell
 
-(load-theme 'spacegray t)
+(load-theme 'railscasts t)
 
 (provide 'init)
 
