@@ -90,6 +90,14 @@
 	    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
 (global-set-key (kbd "C-x C-t") 'neotree-toggle)
 
+;; Use Neotree's smart open
+(setq-default neo-smart-open t)
+
+;; Don't allow neotree to be the only open window
+(setq-default neo-dont-be-alone t)
+
+(setq neo-theme 'nerd)
+
 (setq backup-directory-alist `(("." . "~/.saves")))        ; Place saves elsewhere
 
 (global-linum-mode t)                                      ; Enable global line numbers
