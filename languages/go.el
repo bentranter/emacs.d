@@ -8,7 +8,7 @@
 (require 'company-go)
 
 (setq exec-path (cons "/usr/local/go/bin" exec-path))
-(add-to-list 'exec-path "/Users/bentranter/go/bin")
+(add-to-list 'exec-path "/Users/bentranter/Go/bin")
 
 (add-hook 'before-save-hook 'gofmt-before-save)
 (add-hook 'go-mode-hook 'company-mode)                     ; Enable autocomplete for Go using company mode

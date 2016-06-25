@@ -65,6 +65,25 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+;; Setup font
+(set-frame-font "Source Code Pro 13")
+
+;; Hide toolbars and menu bar
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+
+;; Match parentheses
+(electric-pair-mode 1)
+
+; Configure Company Mode
+(eval-after-load 'company
+  '(progn
+     (define-key company-active-map (kbd "TAB") 'company-select-next)
+     (define-key company-active-map [tab] 'company-select-next)))
+(setq-default company-selection-wrap-around t)
+(setq-default company-minimum-prefix-length 1)
+
 ;; Load language specific stuff
 (require 'lisp)
 (require 'go)
@@ -128,7 +147,7 @@
 (setq inhibit-startup-message t)                           ; Disbale startup messages
 (setq bell-volume 0)                                       ; No more terminal bell
 
-(load-theme 'railscasts t)
+(load-theme 'spacegray t)
 
 (provide 'init)
 
