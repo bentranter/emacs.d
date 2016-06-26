@@ -49,6 +49,7 @@
 	flycheck
 	go-autocomplete
 	go-mode
+	helm
 	js2-mode
 	neotree
 	noctilux-theme
@@ -75,6 +76,13 @@
 
 ;; Match parentheses
 (electric-pair-mode 1)
+
+;; Setup Helm - the Damn GOod File Finder
+(require 'helm)
+(require 'helm-config)
+(helm-mode 1)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+
 
 ; Configure Company Mode
 (eval-after-load 'company
