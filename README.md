@@ -1,4 +1,4 @@
 My Emacs Config
 ---
 
-I recently switched to emacs so this still is a mess.
+Emacs config for Go and JavaScript dev. Relatively Spacemacs-inspired, where pressing tab does pretty much everything you'd expect.
