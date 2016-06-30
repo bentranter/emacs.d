@@ -51,6 +51,7 @@
 	go-mode
 	helm
 	js2-mode
+	magit
 	neotree
 	noctilux-theme
 	tern
