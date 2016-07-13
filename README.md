@@ -14,5 +14,4 @@ The only relevant commands:
 - `C-x C-t` - Toggle NeoTree. Push `<tab>` to open the file.
 - Autocomplete starts after one letter. Push `<tab>` to go the next suggested completion.
 
-
 I also use **evil-mode**. You'd better use it to!
