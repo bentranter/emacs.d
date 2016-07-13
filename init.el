@@ -94,7 +94,8 @@
 (require 'helm-config)
 (helm-mode 1)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
+(define-key helm-map [tab] 'helm-execute-persistent-action)
 
 
 ; Configure Company Mode
