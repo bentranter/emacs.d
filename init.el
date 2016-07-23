@@ -25,8 +25,9 @@
 
 ;; Setup package stuff
 (require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/") t)
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
 
 (package-initialize)
 
@@ -54,6 +55,8 @@
 	magit
 	neotree
 	noctilux-theme
+	php-mode
+	php-extras
 	tern
 	tern-auto-complete
 	))
@@ -112,6 +115,7 @@
 (require 'setup-js)
 (require 'setup-cpp)
 (require 'setup-elixir)
+(require 'setup-php)
 
 ;; Use Vim keybindings like a normal person
 (require 'evil)
@@ -169,7 +173,7 @@
 (setq inhibit-startup-message t)                           ; Disbale startup messages
 (setq bell-volume 0)                                       ; No more terminal bell
 
-(load-theme 'spacegray t)
+(load-theme 'base16-ocean-dark t)
 
 (provide 'init)
 
