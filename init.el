@@ -8,6 +8,9 @@
 ;; Disable startup message
 (setq inhibit-startup-message t)
 
+;; Fullscreen
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; Set path to dependencies
 (defvar languages-dir)
 (setq languages-dir (expand-file-name "languages" user-emacs-directory))
