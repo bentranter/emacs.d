@@ -56,10 +56,11 @@
 	helm
 	js2-mode
 	magit
+	markdown-mode
 	neotree
-	noctilux-theme
 	php-mode
 	php-extras
+	tabbar
 	tern
 	tern-auto-complete
 	))
@@ -85,6 +86,10 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
+
+;; Tab Bar (like AquaMacs!)
+(require 'tabbar)
+(tabbar-mode 1)
 
 ;; Match parentheses
 (electric-pair-mode 1)
@@ -114,14 +119,18 @@
 (require 'setup-elixir)
 (require 'setup-php)
 
+;; Use Markdown mode
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.txt\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
 ;; Use Vim keybindings like a normal person
 (require 'evil)
 (evil-mode 1)
-
-;; (require 'sr-speedbar)
-;; (global-set-key (kbd "C-x C-t") 'sr-speedbar-toggle)
-;; (setq sr-speedbar-width 28)
-;; (setq sr-speedbar-right-side nil)
 
 (require 'neotree)
 (add-hook 'neotree-mode-hook
