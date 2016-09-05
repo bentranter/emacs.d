@@ -503,6 +503,19 @@
    `(custom-group-tag ((t (:foreground ,base0D))))
    `(custom-state ((t (:foreground ,base0B)))))
 
+   `(setq tabbar-use-images nil)
+   `(tabbar-default ((t (:background ,base01 :foreground ,base06 :height 140 :width normal :family "Source Code Pro"))))
+   `(tabbar-selected ((t (:background "black" :foreground "green" :box (:line-width 3 :color "black") :weight bold :height 140))))
+   `(tabbar-unselected ((t (:background "orange" :foreground "black" :box (:line-width 3 :color "orange") :weight bold :height 140))))
+   `(tabbar-selected-highlight ((t (:background "red" :foreground "black" :box (:line-width 3 :color "red")))))
+   `(tabbar-unselected-highlight ((t (:background "yellow" :foreground "black" :box (:line-width 3 :color "yellow")))))
+   `(tabbar-separator ((t (:foreground "black" :height 1.0))))
+   `(tabbar-selected-modified ((t (:background "black" :foreground "red" :weight bold :height 140))))
+   `(tabbar-unselected-modified ((t (:foreground "blue" :background "orange" :weight bold :height 140))))
+   `(tabbar-key-binding ((t (:foreground "white"))))
+   `(tabbar-button-highlight ((t (:foreground "orange"))))
+   `(tabbar-highlight ((t (:foreground "red" :underline t))))
+
   (custom-theme-set-variables
    'base16-ocean-dark
 
